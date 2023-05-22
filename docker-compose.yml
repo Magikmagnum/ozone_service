@@ -3,7 +3,7 @@ version: "3.9"
 services:
       www:
             build: php
-            container_name: www_3ptitschat
+            container_name: www_3ptitschats
             ports:
                   - "8742:80"
             volumes:
@@ -15,10 +15,10 @@ services:
 
       db:
             image: mysql
-            container_name: db_3ptitschat
+            container_name: db_3ptitschats
             restart: always
             volumes:
-                  - db-3ptitschat-data:/var/lib/mysql
+                  - db-3ptitschats-data:/var/lib/mysql
             environment:
                   MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
             networks:
@@ -26,7 +26,7 @@ services:
 
       phpmyadmin:
             image: phpmyadmin
-            container_name: phpmyadmin_3ptitschat
+            container_name: phpmyadmin_3ptitschats
             restart: always
             depends_on:
                   - db
@@ -39,7 +39,7 @@ services:
 
       maildev:
             image: maildev/maildev
-            container_name: maildev_3ptitschat
+            container_name: maildev_3ptitschats
             command: bin/maildev --web 80 --smtp 25 --hide-extensions STARTTLS
             ports:
                   - "8082:80"
@@ -51,7 +51,7 @@ services:
             build:
                   context: ./react
                   dockerfile: Dockerfile
-            container_name: reactapp_3ptitschat
+            container_name: reactapp_3ptitschats
             ports:
                   - "3000:3000"
             volumes:
@@ -68,6 +68,6 @@ networks:
 
 
 volumes:
-      db-3ptitschat-data:
+      db-3ptitschats-data:
 
 
