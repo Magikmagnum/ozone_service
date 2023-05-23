@@ -333,6 +333,13 @@ const Form: React.FC = () => {
     };
 
 
+
+    const handleButtonBuyClick = () => {
+        if ('data' in response && 'url' in response.data && response.data.url !== '') {
+            window.location.href = response.data.url;
+        }
+    };
+
     return (
 
         <section className="content reverse">
@@ -488,9 +495,9 @@ const Form: React.FC = () => {
                         <section className="profil" >
                             <div style={{ flex: "2" }}>
                                 <Header srcImg={(response as AnalyseDataResponseTypes).data.urlimage} title={(response as AnalyseDataResponseTypes).data.name} subtitle={(response as AnalyseDataResponseTypes).data.marque} description={(response as AnalyseDataResponseTypes).data.analyse_quantitatif_nutriment.proteine ? 'Croquettes pour chat stérilisé' : 'Croquettes pour chat non-stérilisé'} styleImage='avatarSqareMax' styleContent='headerCmpCenter' styleTitle='headerTitle' />
-                                <Button type="submit" variant="contained" color="primary" className='button-bay'>
-                                    Acheter
-                                </Button>
+                                {('data' in response && 'url' in response.data && response.data.url !== '') ? <Button type="submit" variant="contained" color="primary" className='button-bay' onClick={handleButtonBuyClick}>
+                                    Acheter une croquette
+                                </Button> : ''}
                             </div>
                             <div className="noteBox" style={{ flex: "2" }}>
                             </div>
