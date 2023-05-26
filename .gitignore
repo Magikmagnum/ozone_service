@@ -24,17 +24,18 @@
 
 
 ###> symfony/framework-bundle ###
-project/.env.local
-project/.env.local.php
-project/.env.*.local
-project/config/secrets/prod/prod.decrypt.private.php
-project/public/bundles/
-project/var/
-project/vendor/
+php/.env.local
+php/.env.local.php
+php/.env.*.local
+php/config/secrets/prod/prod.decrypt.private.php
+php/public/bundles/
+php/var/
+php/vendor/
+php/vendor
 ###< symfony/framework-bundle ###
 
 ###> lexik/jwt-authentication-bundle ###
-project/config/jwt/*.pem
+php/config/jwt/*.pem
 ###< lexik/jwt-authentication-bundle ###
 
 
