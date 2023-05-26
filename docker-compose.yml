@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
       www:
-            build: php
+            build: apache
             container_name: www_ozone
             ports:
                   - "8642:80"
