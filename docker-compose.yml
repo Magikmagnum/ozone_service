@@ -3,7 +3,7 @@ version: "3.9"
 services:
       www:
             build: apache
-            container_name: www_3petitchats_dev
+            container_name: www_ozone
             ports:
                   - "8642:80"
             volumes:
@@ -15,10 +15,10 @@ services:
 
       db:
             image: mysql
-            container_name: db_3petitchats_dev
+            container_name: db_ozone
             restart: always
             volumes:
-                  - db-3petitchats_dev-data:/var/lib/mysql
+                  - db-ozone-data:/var/lib/mysql
             environment:
                   MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
             networks:
@@ -26,7 +26,7 @@ services:
 
       phpmyadmin:
             image: phpmyadmin
-            container_name: phpmyadmin_3petitchats_dev
+            container_name: phpmyadmin_ozone
             restart: always
             depends_on:
                   - db
@@ -39,7 +39,7 @@ services:
 
       maildev:
             image: maildev/maildev
-            container_name: maildev_3petitchats_dev
+            container_name: maildev_ozone
             command: bin/maildev --web 80 --smtp 25 --hide-extensions STARTTLS
             ports:
                   - "8182:80"
@@ -51,7 +51,7 @@ services:
             build:
                   context: ./reactJs
                   dockerfile: Dockerfile
-            container_name: reactapp_3petitchats_dev
+            container_name: reactapp_ozone
             ports:
                   - "3100:3000"
             volumes:
@@ -68,4 +68,4 @@ networks:
 
 
 volumes:
-      db-3petitchats_dev-data:
+      db-ozone-data:
