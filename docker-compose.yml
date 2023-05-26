@@ -3,11 +3,11 @@ version: "3.9"
 services:
       www:
             build: php
-            container_name: www_3ptitschats
+            container_name: www_ozone
             ports:
                   - "8742:80"
             volumes:
-                  - ./php/vhosts:/etc/apache2/sites-enabled
+                  - ./apache/vhosts:/etc/apache2/sites-enabled
                   - ./:/var/www
             restart: always
             networks:
@@ -15,10 +15,10 @@ services:
 
       db:
             image: mysql
-            container_name: db_3ptitschats
+            container_name: db_ozone
             restart: always
             volumes:
-                  - db-3ptitschats-data:/var/lib/mysql
+                  - db-ozone-data:/var/lib/mysql
             environment:
                   MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
             networks:
@@ -26,7 +26,7 @@ services:
 
       phpmyadmin:
             image: phpmyadmin
-            container_name: phpmyadmin_3ptitschats
+            container_name: phpmyadmin_ozone
             restart: always
             depends_on:
                   - db
@@ -39,7 +39,7 @@ services:
 
       maildev:
             image: maildev/maildev
-            container_name: maildev_3ptitschats
+            container_name: maildev_ozone
             command: bin/maildev --web 80 --smtp 25 --hide-extensions STARTTLS
             ports:
                   - "8082:80"
@@ -49,13 +49,13 @@ services:
 
       reactapp:
             build:
-                  context: ./react
+                  context: ./reactJs
                   dockerfile: Dockerfile
-            container_name: reactapp_3ptitschats
+            container_name: reactapp_ozone
             ports:
-                  - "3000:3000"
+                  - "3001:3000"
             volumes:
-                  - ./react:/app
+                  - ./reactJs:/app
             environment:
                   - NODE_ENV=development
             command: npm start
@@ -68,6 +68,4 @@ networks:
 
 
 volumes:
-      db-3ptitschats-data:
-
-
+      db-ozone-data:

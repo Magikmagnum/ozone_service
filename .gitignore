@@ -24,13 +24,13 @@
 
 
 ###> symfony/framework-bundle ###
-/project/.env.local
-/project/.env.local.php
-/project/.env.*.local
-/project/config/secrets/prod/prod.decrypt.private.php
-/project/public/bundles/
-/project/var/
-/project/vendor/
+project/.env.local
+project/.env.local.php
+project/.env.*.local
+project/config/secrets/prod/prod.decrypt.private.php
+project/public/bundles/
+project/var/
+project/vendor/
 ###< symfony/framework-bundle ###
 
 ###> lexik/jwt-authentication-bundle ###
@@ -39,9 +39,17 @@ project/config/jwt/*.pem
 
 
 # dependencies
-/react/node_modules
-/react/.pnp
+reactJs/node_modules/*
+reactJs/.pnp
 .pnp.js
 
 # testing
-/react/coverage
+reactJs/coverage
+
+
+reactJs/docker-compose.yml
+
+reactJs/node_modules
+reactJs/README.md
+
+php/translations/lang.fr.yaml
